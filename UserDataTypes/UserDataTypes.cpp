@@ -1,45 +1,31 @@
-// HelloWorld.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// UserDataTypes.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "Student.h"
+#include "Employee.h"
 #include <iostream>
-
 using namespace std;
 
-class Person
-{
-public:
-    std::string name;
-    int age;
-
-    void f();
-};
-
 int main() {
+    int numEmployees;
+    std::cout << "Number of employees (max 5): ";
+    std::cin >> numEmployees;
 
-    Student student;
-    student.SetName("Chris");
-    student.Write();
-    f();
+    if (numEmployees > 5) numEmployees = 5; // Limit to 5 employees
 
-    Person person;
-    person.age = 19;
+    Employee employees[5]; // Array of Employee objects
 
-    unsigned int i = -23;
-    //printf("%d\n", i);
-    std::cout << i << std::endl;
-    std::cout << sizeof(int) << std::endl;
+    for (int i = 0; i < numEmployees; i++) {
+        std::cout << "\nEnter details for Employee " << (i + 1) << ":\n";
+        employees[i].Read();
+    }
 
-    char c = 'A';
-
-    cout << c << endl;
-
-    cout << "Hello, World!" << endl;
-    cout << "Git is now tracking this project!" << endl;
+    std::cout << "\n--- Payroll Summary ---\n";
+    for (int i = 0; i < numEmployees; i++) {
+        employees[i].Write();
+    }
 
     return 0;
 }
-
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
