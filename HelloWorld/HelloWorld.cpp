@@ -25,14 +25,17 @@ int main() {
     Person person;
     person.age = 19;
 
-    unsigned int i = -23;
+    unsigned int i = 82;
     //printf("%d\n", i);
     std::cout << i << std::endl;
     std::cout << sizeof(int) << std::endl;
+    std::cout << sizeof(Person) << std::endl;
+
+    cout << ++i << endl;
 
     char c = 'A';
 
-    cout << c << endl;
+    cout << &i << endl;
 
     cout << "Hello, World!" << endl;
     cout << "Git is now tracking this project!" << endl;
