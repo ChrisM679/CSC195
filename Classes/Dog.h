@@ -1,21 +1,46 @@
 #pragma once
 #include "Animal.h"
 #include <iostream>
+#include <limits>
 
 class Dog : public Animal
 {
 public:
+    void Read(std::ostream& ostream, std::istream& istream) override;
+    void Write(std::ostream& ostream) const override;
+    eType GetType() const override { return eType::DOG; }
 
-	virtual void Read()
-	{
-		std::cout << "Name";
-		std::cin >> name;
-		std::cout << "Age";
-		std::cin >> age;
-	}
-	virtual void Write()
-	{
-		std::cout << "Name" << std::endl;
-		std::cout << "Age" << std::endl;
-	}
+private:
+    unsigned short friendliness = 0;
 };
+
+inline void Dog::Read(std::ostream& ostream, std::istream& istream)
+{
+    Animal::Read(ostream, istream);
+
+    unsigned short inputFriendliness;
+    do
+    {
+        ostream << "Enter friendliness (1-10): ";
+        istream >> inputFriendliness;
+
+        if (istream.fail() || inputFriendliness < 1 || inputFriendliness > 10)
+        {
+            ostream << "Invalid input. Please enter a number between 1 and 10.\n";
+            istream.clear(); // Clear the error flag
+            istream.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        }
+        else
+        {
+            friendliness = inputFriendliness;
+            break;
+        }
+    } while (true);
+}
+
+inline void Dog::Write(std::ostream& ostream) const
+{
+    ostream << "---DOG---\n";
+    Animal::Write(ostream);
+    ostream << "Friendliness: " << friendliness << "\n";
+}
