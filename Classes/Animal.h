@@ -44,8 +44,8 @@ inline void Animal::Read(std::ostream& ostream, std::istream& istream)
     while (!(istream >> lifespan) || lifespan == 0)
     {
         ostream << "Invalid input. Please enter a positive number for lifespan.\n";
-        istream.clear(); // Clear the error flag
-        istream.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        istream.clear();
+        istream.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 }
 

@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Cat.h" />
-    <ClInclude Include="DataBase.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="Dog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

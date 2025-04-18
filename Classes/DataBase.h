@@ -5,12 +5,12 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include <algorithm>
+#include <algorithm>    
 
-class DataBase
+class Database
 {
 public:
-    ~DataBase() = default;
+    ~Database() = default;
 
     void Create(Animal::eType type);
     void DisplayAll() const;
@@ -22,7 +22,7 @@ private:
     std::vector<std::unique_ptr<Animal>> animals;
 };
 
-void DataBase::Create(Animal::eType type)
+void Database::Create(Animal::eType type)
 {
     std::unique_ptr<Animal> animal;
     switch (type)
@@ -44,7 +44,7 @@ void DataBase::Create(Animal::eType type)
     }
 }
 
-void DataBase::DisplayAll() const
+void Database::DisplayAll() const
 {
     for (const auto& animal : animals)
     {
@@ -52,7 +52,7 @@ void DataBase::DisplayAll() const
     }
 }
 
-void DataBase::Display(const std::string& name) const
+void Database::Display(const std::string& name) const
 {
     auto it = std::find_if(animals.begin(), animals.end(),
         [&name](const std::unique_ptr<Animal>& animal) {
@@ -69,7 +69,7 @@ void DataBase::Display(const std::string& name) const
     }
 }
 
-void DataBase::Display(Animal::eType type) const
+void Database::Display(Animal::eType type) const
 {
     bool found = false;
     for (const auto& animal : animals)
@@ -87,7 +87,7 @@ void DataBase::Display(Animal::eType type) const
     }
 }
 
-bool DataBase::Remove(const std::string& name)
+bool Database::Remove(const std::string& name)
 {
     auto it = std::remove_if(animals.begin(), animals.end(),
         [&name](const std::unique_ptr<Animal>& animal) {

@@ -27,8 +27,8 @@ inline void Dog::Read(std::ostream& ostream, std::istream& istream)
         if (istream.fail() || inputFriendliness < 1 || inputFriendliness > 10)
         {
             ostream << "Invalid input. Please enter a number between 1 and 10.\n";
-            istream.clear(); // Clear the error flag
-            istream.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+            istream.clear();
+            istream.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         else
         {

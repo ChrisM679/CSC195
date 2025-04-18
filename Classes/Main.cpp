@@ -1,4 +1,4 @@
-#include <Database.h>
+#include "Database.h"
 #include <iostream>
 #include <limits>
 
@@ -11,8 +11,8 @@ enum MenuOptions {
 };
 
 void ClearInputStream() {
-    std::cin.clear(); // Clear error flags
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 int main()
@@ -41,12 +41,12 @@ int main()
 
         switch (selection) {
         case ADD_ANIMAL: {
-            std::cout << "Enter type (0 for CAT, 1 for DOG, 2 for BIRD): ";
+            std::cout << "Enter type (0 for CAT or 1 for DOG): ";
             int t;
             std::cin >> t;
 
             if (std::cin.fail() || t < 0 || t > 2) {
-                std::cout << "Invalid type. Please enter 0, 1, or 2.\n";
+                std::cout << "Invalid type. Please enter 0 or 1\n";
                 ClearInputStream();
                 break;
             }
@@ -61,16 +61,16 @@ int main()
             std::cout << "Enter name: ";
             std::string name;
             std::cin >> name;
-            database.Display(name); // Assuming this removes the animal; clarify if needed
+            database.Display(name);
             break;
         }
         case DISPLAY_BY_TYPE: {
-            std::cout << "Enter type (0 for CAT, 1 for DOG, 2 for BIRD): ";
+            std::cout << "Enter type (0 for CAT or 1 for DOG): ";
             int t;
             std::cin >> t;
 
             if (std::cin.fail() || t < 0 || t > 2) {
-                std::cout << "Invalid type. Please enter 0, 1, or 2.\n";
+                std::cout << "Invalid type. Please enter 0 or 1\n";
                 ClearInputStream();
                 break;
             }
