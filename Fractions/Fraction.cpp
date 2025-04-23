@@ -1,4 +1,5 @@
 #include "Fraction.h"
+#include <iostream>
 
 mathlib::Fraction::Fraction(int numerator, int denominator)
 {
@@ -120,9 +121,9 @@ bool mathlib::Fraction::operator>=(const Fraction& other) const
 
 void mathlib::Fraction::reduce()  
 {  
-int gcdValue = gcd(numerator, denominator);  
-numerator /= gcdValue;  
-denominator /= gcdValue;  
+	int gcdValue = std::gcd(numerator, denominator);
+	numerator /= gcdValue;  
+	denominator /= gcdValue;  
 if (denominator < 0)  
 {  
 	numerator = -numerator;  
@@ -136,21 +137,20 @@ std::ostream& mathlib::operator<<(std::ostream& os, const Fraction& fraction)
 	return os;
 }
 
-//std::istream& mathlib::operator>>(std::istream& is, Fraction& fraction)  
-//{  
-//char slash;  
-//is >> fraction.numerator >> slash >> fraction.denominator;  
-//
-//if (is.fail() || slash != '/') {  
-//	is.setstate(std::ios::failbit);  
-//	return is;  
-//}  
-//
-//if (fraction.denominator == 0) {  
-//	throw std::invalid_argument("Denominator cannot be zero.");  
-//}  
-//
-//fraction.reduce();  
-//return is;  
-//}
+std::istream& mathlib::operator>>(std::istream& is, Fraction& fraction)  
+{  
+char slash;  
+is >> fraction.numerator >> slash >> fraction.denominator;  
+if (slash != '/')  
+{  
+	is.setstate(std::ios::failbit);  
+	return is;  
+}  
+if (fraction.denominator == 0)  
+{  
+	throw std::invalid_argument("Denominator cannot be zero.");  
+}  
+fraction.reduce();  
+return is;  
+}
 

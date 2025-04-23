@@ -19,7 +19,7 @@ int main()
 
     mathlib::Fraction fraction3;
     std::cout << "input fraction (numerator - denominator): \n";
-    //std::cin >> fraction3;
+    std::cin >> fraction3;
     std::cout << fraction3 << std::endl;
     std::cout << fraction3.ToFloat() << std::endl;
 }
